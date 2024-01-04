@@ -35,7 +35,9 @@ const getUserDetails = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const { id } = req.body
-    await userModel.findOneAndUpdate({_id: id}, {$set: {isDeleted: true}})
+    console.log(id)
+    const user = await userModel.findOneAndUpdate({_id: id}, {$set: {isDeleted: true}})
+    console.log(user)
     res.json({success: true})
   } catch (error) {
     console.log(error)
